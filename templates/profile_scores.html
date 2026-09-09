@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Skill Scores — {{ student.name }}</h2>
+<table class="table table-striped">
+  <thead><tr><th>Skill</th><th>Score</th><th>Level</th></tr></thead>
+  <tbody>
+    {% for r in results %}
+    <tr>
+      <td>{{ r.skill }}</td>
+      <td>{{ r.score|round(1) }}</td>
+      <td>{{ r.classification }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<a class="btn btn-secondary" href="{{ url_for('profile.view_profile', student_id=student.id) }}">Back</a>
+{% endblock %}

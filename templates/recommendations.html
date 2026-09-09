@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Project Recommendations for {{ student.name }}</h2>
+{% if recommendations %}
+  <div class="list-group">
+    {% for r in recommendations %}
+      <div class="list-group-item">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">{{ r.title }}</h5>
+          <small>{{ r.score|round(1) }}%</small>
+        </div>
+        <p class="mb-1">Domain: {{ r.domain }} — Difficulty: {{ r.difficulty }}</p>
+        <p class="mb-1"><strong>Matched:</strong> {{ r.matched_skills|join(', ') or 'None' }} | <strong>Missing:</strong> {{ r.missing_skills|join(', ') or 'None' }}</p>
+        <p class="mb-1"><strong>Why:</strong> {{ r.explanation }}</p>
+        {% if r.components %}
+          <div class="mt-2">
+            <strong>Component scores:</strong>
+            <ul>
+              <li>Content similarity: {{ r.components.content_similarity }}</li>
+              <li>Skill match: {{ r.components.skill_match }}</li>
+              <li>Gap penalty: {{ r.components.gap_penalty }}</li>
+              <li>Interest alignment: {{ r.components.interest }}</li>
+              <li>Potential growth: {{ r.components.potential }}</li>
+            </ul>
+          </div>
+        {% endif %}
+        {% if r.content_terms %}
+          <div class="mt-1"><strong>Top terms:</strong> {{ r.content_terms|join(', ') }}</div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <div class="alert alert-info">No recommendations available.</div>
+{% endif %}
+
+<a class="btn btn-secondary mt-3" href="{{ url_for('profile.view_profile', student_id=student.id) }}">Back</a>
+{% endblock %}

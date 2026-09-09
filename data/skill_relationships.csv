@@ -1,0 +1,35 @@
+source,target,relationship_type,strength
+Python,NumPy,prerequisite,1.0
+NumPy,Pandas,prerequisite,0.95
+Pandas,Data Cleaning,prerequisite,0.9
+Data Cleaning,Feature Engineering,prerequisite,0.9
+Feature Engineering,Model Evaluation,related,0.8
+Model Evaluation,Cross Validation,related,0.9
+Statistics,Linear Regression,prerequisite,0.9
+Linear Regression,Machine Learning,related,0.85
+Machine Learning,Scikit-learn,related,0.95
+Machine Learning,Neural Networks,related,0.9
+Neural Networks,TensorFlow,related,0.9
+Neural Networks,PyTorch,related,0.9
+Deep Learning,Transformers,related,0.8
+NLP,TF-IDF,prerequisite,0.9
+TF-IDF,Word Embeddings,related,0.7
+Word Embeddings,Transformers,prerequisite,0.8
+Python,Flask,related,0.8
+HTML,CSS,related,0.95
+CSS,JavaScript,related,0.8
+JavaScript,Web Development,related,0.9
+Databases,SQL,prerequisite,0.95
+SQL,PostgreSQL,related,0.9
+PostgreSQL,Data Engineering,related,0.7
+MongoDB,Data Engineering,related,0.6
+Data Visualization,Matplotlib,related,0.9
+Data Visualization,Seaborn,related,0.85
+OpenCV,Computer Vision,related,0.9
+CNN,Computer Vision,prerequisite,0.9
+Image Processing,OpenCV,related,0.85
+Git,GitHub,related,0.95
+Docker,Model Deployment,related,0.8
+AWS,Model Deployment,related,0.85
+Spark,Big Data,related,0.9
+Hadoop,Big Data,related,0.8

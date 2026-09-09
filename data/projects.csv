@@ -1,0 +1,11 @@
+title,domain,difficulty,required_skills,skills_gained,description
+NLP Document Classifier,NLP,Intermediate,"Python,Scikit-learn,Machine Learning","NLP,Text Processing","Build a classifier for documents"
+Sales Dashboard,Data Visualization,Beginner,"Python,Pandas,Matplotlib","Data Visualization","Create interactive sales charts"
+Image Classification,CV,Intermediate,"Python,PyTorch,CNN","Computer Vision,Model Evaluation","Classify images using CNNs"
+Chatbot with Transformers,NLP,Advanced,"Python,Transformers,PyTorch","NLP,Transformers","Build a chatbot using transformer architectures"
+Recommendation System,ML,Advanced,"Python,Scikit-learn,Collaborative Filtering","Recommendation Engines","Build an item recommender"
+Portfolio Website,Web Development,Beginner,"HTML,CSS,JavaScript,Flask","Web Development","Create a personal portfolio site"
+Data Pipeline with Spark,Data Engineering,Advanced,"Python,Spark,SQL","Big Data,ETL","Build an ETL pipeline with Spark"
+Sentiment Analysis,NLP,Intermediate,"Python,NLTK,TF-IDF","NLP,Text Processing","Analyze sentiment of texts"
+Sales Forecasting,ML,Intermediate,"Python,Pandas,Time Series,Scikit-learn","Time Series,Forecasting","Forecast sales using time series models"
+Database-backed Web App,Web Development,Intermediate,"Python,Flask,PostgreSQL","Databases,API Development","Build a CRUD web application"

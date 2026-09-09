@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center">
+  <h2>Student Profiles</h2>
+  <a class="btn btn-primary" href="{{ url_for('profile.create_profile') }}">Create Profile</a>
+</div>
+<hr>
+<div class="list-group">
+  {% for s in students %}
+    <a class="list-group-item list-group-item-action" href="{{ url_for('profile.view_profile', student_id=s.id) }}">{{ s.name }} - {{ s.email or 'no email' }}</a>
+  {% else %}
+    <div class="alert alert-secondary">No profiles yet.</div>
+  {% endfor %}
+</div>
+{% endblock %}

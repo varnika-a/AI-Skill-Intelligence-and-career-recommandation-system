@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Create Student Profile</h2>
+<form method="post">
+  <div class="mb-3">
+    <label class="form-label">Name</label>
+    <input class="form-control" name="name" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Email</label>
+    <input class="form-control" name="email" type="email">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Education</label>
+    <input class="form-control" name="education">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Semester</label>
+    <input class="form-control" name="semester">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Interests</label>
+    <input class="form-control" name="interests">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Career Goal</label>
+    <input class="form-control" name="career_goal">
+  </div>
+  <button class="btn btn-success">Create</button>
+</form>
+{% endblock %}

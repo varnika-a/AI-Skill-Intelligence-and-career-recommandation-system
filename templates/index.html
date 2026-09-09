@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="py-4">
+  <div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-3">
+      <p class="text-uppercase text-muted mb-2">Student Skill Intelligence</p>
+      <h1 class="display-5 fw-bold">Turn your skills into a learning plan.</h1>
+      <p class="col-md-8 fs-5">Build a student profile, track proficiency, discover projects, and follow a prerequisite-aware roadmap.</p>
+      <a class="btn btn-primary btn-lg me-2" href="{{ url_for('profile.list_profiles') }}">Open profiles</a>
+      <a class="btn btn-outline-primary btn-lg" href="{{ url_for('profile.create_profile') }}">Create a profile</a>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card h-100"><div class="card-body">
+        <h5>Profile intelligence</h5>
+        <p class="text-muted mb-0">Capture skills, resume evidence, interests, and career goals in one place.</p>
+      </div></div>
+    </div>
+    <div class="col-md-4">
+      <div class="card h-100"><div class="card-body">
+        <h5>Explainable recommendations</h5>
+        <p class="text-muted mb-0">See why a project or next skill is recommended, including matched and missing skills.</p>
+      </div></div>
+    </div>
+    <div class="col-md-4">
+      <div class="card h-100"><div class="card-body">
+        <h5>Progress over time</h5>
+        <p class="text-muted mb-0">Record assessments, monitor trends, and test hypothetical skill improvements.</p>
+      </div></div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,79 @@
+name,category,description
+Python,Programming,General-purpose programming language widely used in data science
+Java,Programming,General-purpose object-oriented language
+C++,Programming,Performance-oriented language for systems programming
+SQL,Databases,Relational database query language
+PostgreSQL,Databases,Open-source relational database
+MongoDB,Databases,Document-oriented NoSQL database
+HTML,Web Development,Markup language for web pages
+CSS,Web Development,Styling language for web pages
+JavaScript,Web Development,Client-side scripting language
+Flask,Web Development,Lightweight Python web framework
+REST API,Web Development,API design principles
+Git,Software Development,Version control system
+GitHub,Software Development,Code hosting and collaboration
+NumPy,Data Science,Numeric computing library for Python
+Pandas,Data Science,Data manipulation library for Python
+Matplotlib,Data Visualization,Plotting library
+Seaborn,Data Visualization,Statistical plotting library
+Plotly,Data Visualization,Interactive plotting library
+Power BI,Data Visualization,Business intelligence tool
+Tableau,Data Visualization,Data visualization platform
+Excel,Data Tools,Spreadsheet and data analysis tool
+Scikit-learn,Machine Learning,Classic ML algorithms library
+Statistics,Foundations,Fundamental statistics concepts
+Linear Regression,ML Algorithms,Regression technique
+Logistic Regression,ML Algorithms,Classification technique
+Decision Trees,ML Algorithms,Tree-based models
+Random Forest,ML Algorithms,Ensemble learning method
+SVM,ML Algorithms,Support Vector Machines
+Clustering,ML Algorithms,Unsupervised clustering
+PCA,ML Algorithms,Dimensionality reduction
+TensorFlow,Deep Learning,Deep learning framework
+PyTorch,Deep Learning,Deep learning framework
+CNN,Computer Vision,Convolutional Neural Networks
+RNN,Deep Learning,Recurrent Neural Networks
+Transformers,NLP,Attention-based architectures
+Word Embeddings,NLP,Word vector representations (word2vec; GloVe)
+TF-IDF,NLP,Text feature extraction method
+NLTK,NLP,Natural Language Toolkit for Python
+spaCy,NLP,Industrial-strength NLP library
+OpenCV,Computer Vision,Computer vision library
+Image Processing,Computer Vision,Fundamentals of image processing
+YOLO,Computer Vision,Object detection architecture
+Flask-REST,Web Development,REST APIs with Flask
+Docker,DevOps,Containerization platform (optional)
+AWS,Cloud,Cloud computing services (optional)
+Azure,Cloud,Microsoft cloud platform (optional)
+Kubernetes,DevOps,Container orchestration (optional)
+Security,Foundations,Basics of cybersecurity
+Encryption,Security,Data protection methods
+Linux,Systems,Operating system basics
+Bash,Systems,Shell scripting
+Regex,Tools,Text pattern matching
+Data Cleaning,Data Science,Preparing data for analysis
+Feature Engineering,Data Science,Creating predictive features
+Model Evaluation,ML,Assessing model performance
+Hyperparameter Tuning,ML,Model optimization techniques
+Cross Validation,ML,Evaluation technique
+Time Series,ML,Time-dependent data analysis
+Reinforcement Learning,ML,Learning via rewards
+Graph Theory,Foundations,Graph algorithms and concepts
+NetworkX,Tools,Graph analysis library
+API Integration,Web Development,Connecting external APIs
+CI/CD,DevOps,Continuous integration and deployment
+Unit Testing,Software Development,Writing tests for code
+PyTest,Tools,Testing framework for Python
+Virtualenv,Tools,Python environment management
+Conda,Tools,Environment and package manager
+Jupyter,Tools,Interactive notebooks for data work
+Scripting,Software Development,Automating tasks with scripts
+Docker Compose,DevOps,Multi-container apps
+Model Deployment,ML,Serving trained models in production
+Explainable AI,ML,Interpreting model decisions
+Ethics,Foundations,Responsible AI considerations
+Data Visualization Principles,Data Visualization,Best practices
+Data Engineering,Data Tools,Building data pipelines
+MapReduce,Data Engineering,Distributed data processing
+Spark,Data Engineering,Big data processing engine
+Hadoop,Data Engineering,Distributed file system and tools

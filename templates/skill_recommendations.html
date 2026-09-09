@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Skill Recommendations for {{ student.name }}</h2>
+{% if recommendations %}
+  <div class="list-group">
+    {% for r in recommendations %}
+      <div class="list-group-item">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">{{ r.skill_name }}</h5>
+          <small>{{ r.score }}%</small>
+        </div>
+        <p class="mb-1">Category: {{ r.category }} — Projects using skill: {{ r.project_count }}</p>
+        <p class="mb-1"><strong>Why:</strong> {{ r.explanation }}</p>
+      </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <div class="alert alert-info">No skill recommendations available.</div>
+{% endif %}
+
+<div class="mt-3">
+  <a class="btn btn-info" href="{{ url_for('recommendations.student_roadmap', student_id=student.id) }}">View Learning Roadmap</a>
+  <a class="btn btn-secondary" href="{{ url_for('profile.view_profile', student_id=student.id) }}">Back</a>
+</div>
+{% endblock %}

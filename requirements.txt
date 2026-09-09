@@ -1,0 +1,12 @@
+Flask>=2.0
+Flask-SQLAlchemy>=3.0
+pandas
+numpy
+scikit-learn
+nltk
+pdfplumber
+PyMuPDF
+networkx
+python-dotenv
+pytest
+gunicorn; platform_system != "Windows"

@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Skill Evolution Tracker - {{ student.name }}</h2>
+<p>Track your skill progression over time and record new assessments.</p>
+
+<div class="card mb-4">
+  <div class="card-header">
+    <h5>Record New Assessment</h5>
+  </div>
+  <div class="card-body">
+    {% if error %}
+      <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+    <form method="post" class="row g-2 align-items-end">
+      <div class="col-md-6">
+        <label class="form-label">Skill</label>
+        <select name="skill_name" class="form-select" required>
+          <option value="">-- Select skill --</option>
+          {% for skill in all_skills %}
+            <option value="{{ skill.name }}">{{ skill.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Score (0-100)</label>
+        <input type="number" name="new_score" class="form-control" min="0" max="100" value="50" required>
+      </div>
+      <div class="col-md-3">
+        <button type="submit" class="btn btn-primary">Record Assessment</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<h4>Skill Evolution Histories</h4>
+{% if histories %}
+  <div class="row">
+    {% for hist in histories %}
+      <div class="col-md-6 mb-3">
+        <div class="card">
+          <div class="card-header">
+            <h6 class="card-title">{{ hist.skill_name }}</h6>
+          </div>
+          <div class="card-body">
+            <div class="row text-center mb-3">
+              <div class="col-4">
+                <small class="text-muted">Current</small>
+                <h5>{{ hist.current_score|round(1) }}%</h5>
+              </div>
+              <div class="col-4">
+                <small class="text-muted">Improvement</small>
+                <h5>{% if hist.improvement >= 0 %}+{% endif %}{{ hist.improvement }}%</h5>
+              </div>
+              <div class="col-4">
+                <small class="text-muted">Avg</small>
+                <h5>{{ hist.avg_score }}%</h5>
+              </div>
+            </div>
+            
+            <div class="progress mb-2">
+              <div class="progress-bar bg-info" style="width: {{ hist.current_score }}%"></div>
+            </div>
+            
+            <dl class="row">
+              <dt class="col-sm-6">Trend:</dt>
+              <dd class="col-sm-6">
+                <span class="badge bg-{% if hist.trend == 'improving' %}success{% elif hist.trend == 'declining' %}danger{% else %}secondary{% endif %}">
+                  {{ hist.trend }}
+                </span>
+              </dd>
+              
+              <dt class="col-sm-6">Assessments:</dt>
+              <dd class="col-sm-6">{{ hist.assessment_count }}</dd>
+              
+              {% if hist.velocity_weeks >= 0 %}
+                <dt class="col-sm-6">To Level 80:</dt>
+                <dd class="col-sm-6">~{{ hist.velocity_weeks }} weeks</dd>
+              {% endif %}
+            </dl>
+            
+            <div class="small">
+              <strong>Timeline:</strong><br>
+              <code>
+                {% for assess in hist.assessments %}
+                  {{ assess.date[:10] }}: {{ assess.score }}% 
+                  {% if not loop.last %}<br>{% endif %}
+                {% endfor %}
+              </code>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <div class="alert alert-info">No assessment history yet. Record your first assessment above!</div>
+{% endif %}
+
+<hr>
+<a class="btn btn-secondary mt-3" href="{{ url_for('profile.view_profile', student_id=student.id) }}">Back</a>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Skill Gaps — {{ student.name }}</h2>
+
+<h4>Target skills</h4>
+{% if target_skills %}
+  <p>{{ target_skills|join(', ') }}</p>
+{% else %}
+  <p class="text-muted">No target skills provided.</p>
+{% endif %}
+
+<h4 class="mt-3">Summary</h4>
+<div class="row">
+  <div class="col-md-6">
+    <h5>Strong</h5>
+    <ul>{% for s in analysis.categories.strong %}<li>{{ s }}</li>{% else %}<li class="text-muted">None</li>{% endfor %}</ul>
+  </div>
+  <div class="col-md-6">
+    <h5>Adequate</h5>
+    <ul>{% for s in analysis.categories.adequate %}<li>{{ s }}</li>{% else %}<li class="text-muted">None</li>{% endfor %}</ul>
+  </div>
+  <div class="col-md-6">
+    <h5>Developing</h5>
+    <ul>{% for s in analysis.categories.developing %}<li>{{ s }}</li>{% else %}<li class="text-muted">None</li>{% endfor %}</ul>
+  </div>
+  <div class="col-md-6">
+    <h5>Weak</h5>
+    <ul>{% for s in analysis.categories.weak %}<li>{{ s }}</li>{% else %}<li class="text-muted">None</li>{% endfor %}</ul>
+  </div>
+  <div class="col-md-12">
+    <h5>Missing</h5>
+    <ul>{% for s in analysis.categories.missing %}<li>{{ s }}</li>{% else %}<li class="text-muted">None</li>{% endfor %}</ul>
+  </div>
+</div>
+
+<h4 class="mt-3">Prerequisite Gaps</h4>
+{% if analysis.prerequisite_gaps %}
+  <ul>
+  {% for missing, prereqs in analysis.prerequisite_gaps.items() %}
+    <li>{{ missing }}: missing prerequisites — {{ prereqs|join(', ') }}</li>
+  {% endfor %}
+  </ul>
+{% else %}
+  <p class="text-muted">No prerequisite gaps detected.</p>
+{% endif %}
+
+<a class="btn btn-secondary" href="{{ url_for('profile.view_profile', student_id=student.id) }}">Back</a>
+{% endblock %}

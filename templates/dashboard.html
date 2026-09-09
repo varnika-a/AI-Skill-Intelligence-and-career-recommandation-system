@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <div>
+    <p class="text-muted mb-1">Student dashboard</p>
+    <h2 class="mb-0">{{ student.name }}</h2>
+  </div>
+  <a class="btn btn-outline-secondary" href="{{ url_for('profile.view_profile', student_id=student.id) }}">Profile</a>
+</div>
+
+<div class="row g-3 mb-4">
+  <div class="col-sm-6 col-lg-3"><div class="card h-100"><div class="card-body"><small class="text-muted">Tracked skills</small><h3>{{ dashboard.skill_count }}</h3></div></div></div>
+  <div class="col-sm-6 col-lg-3"><div class="card h-100"><div class="card-body"><small class="text-muted">Average proficiency</small><h3>{{ dashboard.average_score }}%</h3></div></div></div>
+  <div class="col-sm-6 col-lg-3"><div class="card h-100"><div class="card-body"><small class="text-muted">Assessments</small><h3>{{ dashboard.assessment_count }}</h3></div></div></div>
+  <div class="col-sm-6 col-lg-3"><div class="card h-100"><div class="card-body"><small class="text-muted">Projects in catalog</small><h3>{{ dashboard.project_count }}</h3></div></div></div>
+</div>
+
+<div class="row g-4">
+  <div class="col-lg-7">
+    <div class="card h-100">
+      <div class="card-header"><h5 class="mb-0">Current skill profile</h5></div>
+      <div class="card-body">
+        {% if dashboard.skill_labels %}
+          <canvas id="skillChart" height="230"></canvas>
+        {% else %}
+          <p class="text-muted mb-0">Add skills to see your proficiency profile.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-5">
+    <div class="card h-100">
+      <div class="card-header d-flex justify-content-between"><h5 class="mb-0">Next skills</h5><a href="{{ url_for('recommendations.student_skill_recommendations', student_id=student.id) }}">View all</a></div>
+      <div class="card-body">
+        {% for recommendation in dashboard.skill_recommendations %}
+          <div class="d-flex justify-content-between border-bottom py-2"><span>{{ recommendation.skill_name }}</span><strong>{{ recommendation.score|round(1) }}%</strong></div>
+        {% else %}<p class="text-muted mb-0">No skill recommendations yet.</p>{% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-7">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between"><h5 class="mb-0">Project opportunities</h5><a href="{{ url_for('recommendations.student_recommendations', student_id=student.id) }}">View all</a></div>
+      <div class="list-group list-group-flush">
+        {% for recommendation in dashboard.project_recommendations %}
+          <div class="list-group-item d-flex justify-content-between"><span>{{ recommendation.title }}</span><strong>{{ recommendation.score|round(1) }}%</strong></div>
+        {% else %}<div class="list-group-item text-muted">No project recommendations yet.</div>{% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-5">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between"><h5 class="mb-0">Recent progress</h5><a href="{{ url_for('recommendations.student_evolution', student_id=student.id) }}">Track</a></div>
+      <div class="card-body">
+        {% for history in dashboard.histories[:4] %}
+          <div class="d-flex justify-content-between py-2"><span>{{ history.skill_name }}</span><span class="badge bg-{% if history.trend == 'improving' %}success{% elif history.trend == 'declining' %}danger{% else %}secondary{% endif %}">{{ history.trend }}</span></div>
+        {% else %}<p class="text-muted mb-0">Record assessments to see progress.</p>{% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if dashboard.skill_labels %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+  new Chart(document.getElementById('skillChart'), {
+    type: 'bar',
+    data: { labels: {{ dashboard.skill_labels|tojson }}, datasets: [{ label: 'Proficiency', data: {{ dashboard.skill_scores|tojson }}, backgroundColor: '#0d6efd', borderRadius: 4 }] },
+    options: { responsive: true, scales: { y: { beginAtZero: true, max: 100 } }, plugins: { legend: { display: false } } }
+  });
+</script>
+{% endif %}
+{% endblock %}

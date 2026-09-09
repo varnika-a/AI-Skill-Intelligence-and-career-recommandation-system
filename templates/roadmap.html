@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Learning Roadmap for {{ student.name }}</h2>
+{% if roadmap %}
+  <div class="roadmap-container">
+    {% for stage in roadmap %}
+      <div class="card mb-3">
+        <div class="card-header bg-primary text-white">
+          <h5 class="mb-0">Stage {{ stage.stage }} — Estimated {{ stage.estimated_weeks }} weeks</h5>
+        </div>
+        <div class="card-body">
+          <h6>Skills to learn:</h6>
+          <ul>
+            {% for skill in stage.skills %}
+              <li><strong>{{ skill }}</strong></li>
+            {% endfor %}
+          </ul>
+          <p class="text-muted"><strong>Details:</strong> {{ stage.explanation }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <div class="alert alert-info">No roadmap available. Please get recommendations first.</div>
+{% endif %}
+
+<a class="btn btn-secondary mt-3" href="{{ url_for('recommendations.student_skill_recommendations', student_id=student.id) }}">Back to Skill Recommendations</a>
+{% endblock %}
