@@ -1,4 +1,4 @@
-# 🤖 AI-Powered Student Skill Intelligence
+# 🤖 AI-Powered Skill Intelligence and Career Recommendation System
 
 An AI-powered platform designed to help students understand their current skills,
 identify skill gaps, discover relevant projects, receive skill recommendations,
